@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
@@ -17,15 +18,15 @@ describe('Authentication System (e2e)', () => {
   });
 
   it('handles a signup request', () => {
-    const email = 'asdlkjq4321@akl.com'
+    const email = 'asdlkjq4321@akl.com';
     return request(app.getHttpServer())
-        .post('/auth/signup')
-        .send({ email, password: 'ascdkadf' })
-        .expect(201)
-        .then((res) => {
-            const { id, email } = res.body;
-            expect(id).toBeDefined();
-            expect(email).toEqual(email)
-        })
+      .post('/auth/signup')
+      .send({ email, password: 'ascdkadf' })
+      .expect(201)
+      .then((res) => {
+        const { id, email } = res.body;
+        expect(id).toBeDefined();
+        expect(email).toEqual(email);
+      });
   });
 });
